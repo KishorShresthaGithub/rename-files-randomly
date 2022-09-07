@@ -19,8 +19,12 @@ function iterate_files (){
 		# $1 is the ext
 		# #2 is the length of string
 			if [ -z $1 ];then
-				echo "Renaming all files...";
-			 	mv $file "$random_string.$fileext";
+				if  [ $fileext = "sh" ]  || [ $fileext = "md" ] ;then
+					echo "Skipped";
+				else
+					echo "Renaming all files...";
+					mv $file "$random_string.$fileext";
+				fi
 			else
 				echo "Renaming all $2 $1 files...";
 			 	mv $file "$random_string.$1";
